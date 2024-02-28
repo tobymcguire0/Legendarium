@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class PlayerMove : PlayerState
 {
-    public PlayerMove(PlayerStateFactory factory, PlayerStateMachine psm) : base(factory, psm)
+    public PlayerMove(PlayerStateFactory factory, PlayerController psm) : base(factory, psm)
     {
 
     }
     public override void CheckSwitchStates()
     {
-        //Do sth at some point
+        if (player.IsMeleePressed)
+        {
+            SwitchState(factory.Melee());
+            return;
+        }
+        if (player.IsMagicPressed)
+        {
+            SwitchState(factory.Magic());
+            return;
+        }
+        if (player.MovingDirection == Vector2.zero)
+        {
+            SwitchState(factory.Idle());
+        }
     }
 
     public override void EnterState()
     {
-        //Idle
+        Debug.Log("Entered Move State");
+
     }
 
     public override void ExitState()
@@ -25,6 +39,10 @@ public class PlayerMove : PlayerState
 
     public override void Update()
     {
-        //Idle
+        player.transform.position += (Vector3)(player.MovingDirection *player.MoveSpeed* player.CharacterData.startingSpeed * Time.deltaTime);
+        if(player.MovingDirection!= Vector2.zero) 
+            player.FacingDirection = player.MovingDirection;
+
+        CheckSwitchStates();
     }
 }

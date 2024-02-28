@@ -4,27 +4,51 @@ using UnityEngine;
 
 public class PlayerMelee : PlayerState
 {
-    public PlayerMelee(PlayerStateFactory factory, PlayerStateMachine psm) : base(factory, psm)
+    public PlayerMelee(PlayerStateFactory factory, PlayerController psm) : base(factory, psm)
     {
 
     }
     public override void CheckSwitchStates()
     {
-        //Do sth at some point
+        if (attackTimer > 0) return;
+        if (player.MovingDirection != Vector2.zero)
+        {
+            SwitchState(factory.Move());
+            return;
+        }
+        if (player.IsMeleePressed)
+        {
+            SwitchState(factory.Melee());
+            return;
+        }
+        if (player.IsMagicPressed)
+        {
+            SwitchState(factory.Magic());
+            return;
+        }
+        if (player.MovingDirection == Vector2.zero)
+        {
+            SwitchState(factory.Idle());
+            return;
+        }
+        
     }
 
     public override void EnterState()
     {
-        //Idle
+        player.MeleeHurtbox(true);
+        attackTimer = 0.5f;
     }
 
     public override void ExitState()
     {
-        //Idle
-    }
+        player.MeleeHurtbox(false);
 
+    }
+    float attackTimer;
     public override void Update()
     {
-        //Idle
+        attackTimer -= Time.deltaTime;
+        CheckSwitchStates();
     }
 }

@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class PlayerIdle : PlayerState
 {
-    public PlayerIdle(PlayerStateFactory factory, PlayerStateMachine psm) : base(factory, psm)
+    public PlayerIdle(PlayerStateFactory factory, PlayerController psm) : base(factory, psm)
     {
 
     }
     public override void CheckSwitchStates()
     {
-        //Do sth at some point
+        if (player.IsMeleePressed)
+        {
+            SwitchState(factory.Melee());
+            return;
+        }
+        if (player.IsMagicPressed)
+        {
+            SwitchState(factory.Magic());
+            return;
+        }
+        if (player.MovingDirection != Vector2.zero)
+        {
+            SwitchState(factory.Move());
+        }
     }
 
     public override void EnterState()
     {
-        //Idle
+        Debug.Log("Entered Idle State");
     }
 
     public override void ExitState()
@@ -26,5 +39,6 @@ public class PlayerIdle : PlayerState
     public override void Update()
     {
         //Idle
+        CheckSwitchStates();
     }
 }

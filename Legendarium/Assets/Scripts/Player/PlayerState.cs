@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class PlayerState
 {
     protected PlayerStateFactory factory;
-    protected PlayerStateMachine player;
-    public PlayerState(PlayerStateFactory factory, PlayerStateMachine psm)
+    protected PlayerController player;
+    public PlayerState(PlayerStateFactory factory, PlayerController psm)
     {
             player = psm;
             this.factory = factory;

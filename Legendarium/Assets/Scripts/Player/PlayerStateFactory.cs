@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStateFactory
 {
-    PlayerStateMachine psm;
-    public PlayerStateFactory(PlayerStateMachine psm)
+    PlayerController psm;
+    public PlayerStateFactory(PlayerController psm)
     {
         this.psm = psm;
     }
