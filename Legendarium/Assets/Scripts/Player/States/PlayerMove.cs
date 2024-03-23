@@ -28,21 +28,19 @@ public class PlayerMove : PlayerState
 
     public override void EnterState()
     {
-        Debug.Log("Entered Move State");
 
     }
 
     public override void ExitState()
     {
-        //Idle
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    public override void Update()
+    public override void Update(float deltaTime)
     {
-        player.transform.position += (Vector3)(player.MovingDirection *player.MoveSpeed* player.CharacterData.startingSpeed * Time.deltaTime);
         if(player.MovingDirection!= Vector2.zero) 
             player.FacingDirection = player.MovingDirection;
-
+        player.GetComponent<Rigidbody2D>().velocity = player.MovingDirection * player.MoveSpeed * player.CharacterData.startingSpeed;
         CheckSwitchStates();
     }
 }

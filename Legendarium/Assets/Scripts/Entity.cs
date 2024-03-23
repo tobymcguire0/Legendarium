@@ -14,14 +14,22 @@ public struct EntityData
 public abstract class Entity : MonoBehaviour
 {
     protected EntityData entityData;
+    protected float invincibilityTimer;
     public virtual void Damage(int amount)
     {
+        if (invincibilityTimer > 0) return;
+        Debug.Log(name + " damaged for " + amount);
         entityData.currentHealth-=amount;
+        invincibilityTimer = .2f;
         if(entityData.currentHealth <= 0 ) 
         {
             entityData.currentHealth = 0;
             Die();
         }
+    }
+    public virtual void Update()
+    {
+        if (invincibilityTimer > 0) invincibilityTimer -= Time.deltaTime;
     }
     protected abstract void Die();
     public virtual void Heal(int amount)

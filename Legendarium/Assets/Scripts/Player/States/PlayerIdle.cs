@@ -28,7 +28,6 @@ public class PlayerIdle : PlayerState
 
     public override void EnterState()
     {
-        Debug.Log("Entered Idle State");
     }
 
     public override void ExitState()
@@ -36,7 +35,7 @@ public class PlayerIdle : PlayerState
         //Idle
     }
 
-    public override void Update()
+    public override void Update(float deltaTime)
     {
         //Idle
         CheckSwitchStates();

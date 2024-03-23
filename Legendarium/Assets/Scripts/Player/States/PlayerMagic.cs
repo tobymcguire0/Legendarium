@@ -35,17 +35,18 @@ public class PlayerMagic : PlayerState
 
     public override void EnterState()
     {
-        attackTimer = .75f;
+        player.FireProjectile();
+
+        attackTimer = .4f;
     }
 
     public override void ExitState()
     {
-        player.FireProjectile();
     }
     float attackTimer;
-    public override void Update()
+    public override void Update(float deltaTime)
     {
-        attackTimer -= Time.deltaTime;
+        attackTimer -= deltaTime;
         CheckSwitchStates();
     }
 }

@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] ProjectileData data;
     Vector2 projectileDirection;
+    bool hitObject = false;
     float life;
     public void Init(Vector2 direction)
     {
@@ -15,6 +16,7 @@ public class Projectile : MonoBehaviour
     }
     private void Update()
     {
+        if (hitObject) return;
         life -= Time.deltaTime;
         if (life <= 0)
         {
@@ -27,6 +29,8 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+            return;
         HitObject();
     }
     public void DestroyProjectile()
@@ -35,6 +39,7 @@ public class Projectile : MonoBehaviour
     }
     void HitObject()
     {
+        hitObject = true;
         GetComponent<Animator>().SetTrigger("Explode");
     }
 }

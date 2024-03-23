@@ -37,7 +37,7 @@ public class PlayerMelee : PlayerState
     public override void EnterState()
     {
         player.MeleeHurtbox(true);
-        attackTimer = 0.5f;
+        attackTimer = 0.2f;
     }
 
     public override void ExitState()
@@ -46,7 +46,7 @@ public class PlayerMelee : PlayerState
 
     }
     float attackTimer;
-    public override void Update()
+    public override void Update(float deltaTime)
     {
         attackTimer -= Time.deltaTime;
         CheckSwitchStates();

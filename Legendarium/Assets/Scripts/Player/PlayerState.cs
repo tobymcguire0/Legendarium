@@ -20,5 +20,5 @@ public abstract class PlayerState
         newState.EnterState();
         player.CurrentState = newState;
     }
-    public abstract void Update();
+    public abstract void Update(float deltaTime);
 }
