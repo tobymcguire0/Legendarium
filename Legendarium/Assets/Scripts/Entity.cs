@@ -15,7 +15,7 @@ public abstract class Entity : MonoBehaviour
 {
     protected EntityData entityData;
     protected float invincibilityTimer;
-    public virtual void Damage(int amount)
+    public virtual void Damage(int amount, Vector2 knockback)
     {
         if (invincibilityTimer > 0) return;
         Debug.Log(name + " damaged for " + amount);
@@ -37,4 +37,6 @@ public abstract class Entity : MonoBehaviour
         entityData.currentHealth+=amount;
         if(entityData.currentHealth > entityData.maxHealth) entityData.currentHealth=entityData.maxHealth;
     }
+
+    
 }

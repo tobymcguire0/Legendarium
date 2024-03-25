@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseEnemy : Entity
+public abstract class BaseEnemy : KinematicMover
 {
     protected Vector2 moveDirection;
     protected Vector2 facingDirection;
@@ -40,24 +40,28 @@ public abstract class BaseEnemy : Entity
         }
         if (direction != Vector2.zero)
             facingDirection = direction;
-        transform.position = transform.position + ((Vector3)direction * enemyData.moveSpeed * Time.deltaTime);
+        Vector2 nextPosition = direction * enemyData.moveSpeed * Time.deltaTime;
+        KinematicMove(nextPosition);
     }
     protected PlayerController player;
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         Initialize();
     }
-    public override void Damage(int amount)
+    public override void Damage(int amount,Vector2 knockback)
     {
-        base.Damage(amount);
-        if (invincibilityTimer > 0) return;
-
+        float oldInvincibilityTimer = invincibilityTimer;
+        base.Damage(amount, knockback);
+        if (oldInvincibilityTimer > 0) return;
+        KinematicMove(knockback*.3f);
         animator.SetTrigger("Stun");
         stunTime = .3f;
     }
     public override void Update()
     {
         base.Update();
+        UnStuck();
         if (attackCooldown > 0) attackCooldown -= Time.deltaTime;
 
         if (stunTime > 0)

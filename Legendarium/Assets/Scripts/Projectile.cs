@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     public void Init(Vector2 direction)
     {
         life = 5;
+        GetComponent<Hurtbox>().InitHurtbox(data.ProjectileDamage);
         projectileDirection = direction;
     }
     private void Update()
@@ -29,7 +30,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")||collision.isTrigger)
             return;
         HitObject();
     }

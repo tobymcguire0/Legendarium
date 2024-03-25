@@ -40,7 +40,9 @@ public class PlayerMove : PlayerState
     {
         if(player.MovingDirection!= Vector2.zero) 
             player.FacingDirection = player.MovingDirection;
-        player.GetComponent<Rigidbody2D>().velocity = player.MovingDirection * player.MoveSpeed * player.CharacterData.startingSpeed;
+        Vector2 nextPosition = player.MovingDirection * player.MoveSpeed * player.CharacterData.startingSpeed*deltaTime;
+
+        player.KinematicMove(nextPosition);
         CheckSwitchStates();
     }
 }

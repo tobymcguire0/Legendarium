@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class PlayerController : Entity
+public class PlayerController : KinematicMover
 {
     public static PlayerController instance;
     PlayerStateFactory states;
@@ -37,6 +37,7 @@ public class PlayerController : Entity
         instance = this;
         states = new PlayerStateFactory(this);
         currentState = states.Idle();
+        rb = GetComponent<Rigidbody2D>();
         MeleeHurtbox(false);
         meleeHurtbox.GetComponentInChildren<Hurtbox>().InitHurtbox((int)(characterData.baseMeleeDamage*globalBaseMeleeDamage));
         entityData.currentMana = characterData.maxMana;
@@ -69,12 +70,12 @@ public class PlayerController : Entity
         
     }
 
-    public override void Damage(int amount)
+    public override void Damage(int amount,Vector2 knockback)
     {
         if (damageTimer > 0) return;
         if(entityData.currentHealth>0)
             damageTimer = invincibilityTime;
-        base.Damage(amount);
+        base.Damage(amount,knockback);
         
     }
     protected override void Die()
@@ -86,18 +87,17 @@ public class PlayerController : Entity
     public override void Update()
     {
         base.Update();
+        UnStuck();
         if (damageTimer > 0) damageTimer -= Time.deltaTime;
         currentState?.Update(Time.deltaTime);
     }
     void OnMagicPressed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("MAGIC PRESSED");
         magicPressed = ctx.ReadValueAsButton();
     }
 
     void OnMeleePressed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("MELEE PRESSED");
         meleePressed = ctx.ReadValueAsButton();
     }
 

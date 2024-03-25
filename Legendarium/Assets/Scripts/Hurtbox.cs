@@ -12,11 +12,11 @@ public class Hurtbox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ignoreTags.Contains(collision.tag)) return;
+        if (ignoreTags.Contains(collision.tag) || collision.isTrigger) return;
         Entity hitEntity;
         if(collision.TryGetComponent<Entity>(out hitEntity))
         {
-            hitEntity.Damage(damage);
+            hitEntity.Damage(damage,(hitEntity.transform.position-transform.position).normalized);
         }
     }
 }
