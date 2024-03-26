@@ -9,8 +9,11 @@ public abstract class BaseEnemy : KinematicMover
     public EnemyData enemyData;
     protected float attackCooldown = 0;
     protected bool attacking;
+    bool moving = false;
     protected float stunTime = 0;
     [SerializeField] protected Animator animator;
+
+
     protected virtual void Initialize()
     {
         entityData.maxHealth = enemyData.maxHealth;
@@ -40,7 +43,7 @@ public abstract class BaseEnemy : KinematicMover
         }
         if (direction != Vector2.zero)
             facingDirection = direction;
-        Vector2 nextPosition = direction * enemyData.moveSpeed * Time.deltaTime;
+        Vector2 nextPosition = direction * enemyData.moveSpeed * Time.fixedDeltaTime;
         KinematicMove(nextPosition);
     }
     protected PlayerController player;
@@ -61,7 +64,6 @@ public abstract class BaseEnemy : KinematicMover
     public override void Update()
     {
         base.Update();
-        UnStuck();
         if (attackCooldown > 0) attackCooldown -= Time.deltaTime;
 
         if (stunTime > 0)
@@ -78,7 +80,12 @@ public abstract class BaseEnemy : KinematicMover
                 animator.SetTrigger("Attack");
             }
 
-        } else
+        }
+    }
+    private void FixedUpdate()
+    {
+        UnStuck();
+        if (!attacking && stunTime<=0)
         {
             Move();
         }

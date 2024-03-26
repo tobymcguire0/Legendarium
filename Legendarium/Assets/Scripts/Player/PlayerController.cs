@@ -89,7 +89,10 @@ public class PlayerController : KinematicMover
         base.Update();
         UnStuck();
         if (damageTimer > 0) damageTimer -= Time.deltaTime;
-        currentState?.Update(Time.deltaTime);
+    }
+    private void FixedUpdate()
+    {
+        currentState?.Update(Time.fixedDeltaTime);
     }
     void OnMagicPressed(InputAction.CallbackContext ctx)
     {

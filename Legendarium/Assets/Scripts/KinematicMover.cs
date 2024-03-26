@@ -7,6 +7,7 @@ public abstract class KinematicMover : Entity
     public Collider2D CollisionBox;
     public LayerMask collisionMask;
     public Rigidbody2D rb;
+    Vector2 nextMove;
     public void KinematicMove(Vector2 newPos)
     {
         if (!CheckCollisionIn(newPos))
@@ -22,13 +23,13 @@ public abstract class KinematicMover : Entity
         rb.MovePosition((Vector2)transform.position + newPos);
     }
     public RaycastHit2D[] collisionResults { get; private set; }
-    public bool CheckCollisionIn(Vector2 direction, float distance = 0.2f)
+    public bool CheckCollisionIn(Vector2 direction)
     {
         ContactFilter2D filter = new ContactFilter2D();
         filter.useTriggers = false;
         filter.SetLayerMask(collisionMask);
         collisionResults = new RaycastHit2D[2];
-        return (CollisionBox.Cast(direction, filter, collisionResults, distance) > 0); 
+        return (CollisionBox.Cast(direction, filter, collisionResults, direction.magnitude+.01f) > 0); 
     }
     public void UnStuck()
     {

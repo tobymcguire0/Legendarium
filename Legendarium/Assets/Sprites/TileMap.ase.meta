@@ -744,15 +744,6 @@ ScriptedImporter:
       spriteId: 70de00744074cf94894fc40b91af2281
     linkedCells: []
     parentIndex: -1
-  - layerIndex: 1
-    guid: 1317221552
-    name: Layer 2
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells: []
-    linkedCells: []
-    parentIndex: -1
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
