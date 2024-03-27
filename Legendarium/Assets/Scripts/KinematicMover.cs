@@ -15,7 +15,6 @@ public abstract class KinematicMover : Entity
             rb.MovePosition((Vector2)transform.position+newPos);
         } else
         {
-            Debug.Log(name+" Hit " + collisionResults[0].collider.gameObject.layer);
         }
     }
     public void KinematicForceMove(Vector2 newPos)

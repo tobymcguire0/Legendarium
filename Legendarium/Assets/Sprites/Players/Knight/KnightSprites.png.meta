@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KnightSprites_0
+      name: KnightIdleR
       rect:
         serializedVersion: 2
         x: 0
@@ -143,7 +143,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_1
+      name: KnightMoveR1
       rect:
         serializedVersion: 2
         x: 16
@@ -164,7 +164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_2
+      name: KnightMoveR2
       rect:
         serializedVersion: 2
         x: 32
@@ -206,7 +206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_4
+      name: KnightIdleL
       rect:
         serializedVersion: 2
         x: 0
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_5
+      name: KnightMoveL1
       rect:
         serializedVersion: 2
         x: 16
@@ -248,7 +248,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_6
+      name: KnightMoveL2
       rect:
         serializedVersion: 2
         x: 32
@@ -269,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_7
+      name: KnightIdleU
       rect:
         serializedVersion: 2
         x: 0
@@ -290,7 +290,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_8
+      name: KnightMoveU1
       rect:
         serializedVersion: 2
         x: 16
@@ -311,7 +311,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_9
+      name: KnightMoveU2
       rect:
         serializedVersion: 2
         x: 32
@@ -332,7 +332,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_10
+      name: KnightIdleD
       rect:
         serializedVersion: 2
         x: 0
@@ -353,7 +353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_11
+      name: KnightMoveD1
       rect:
         serializedVersion: 2
         x: 16
@@ -374,7 +374,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnightSprites_12
+      name: KnightMoveD2
       rect:
         serializedVersion: 2
         x: 32
@@ -394,6 +394,258 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: KnightIdleUR
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a72f72122689e4fb830c1d832e8629
+      internalID: 1792124777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveUR1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7c5b1009ab26b8408ae31c6e58d2757
+      internalID: 1705231993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSprites_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae076f0547cea8046a5abec1e34b2450
+      internalID: 349833702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightIdleUL
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb6606823a73d04980116d7caf20d96
+      internalID: 1906287212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveUL1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a912ef1c86f1e9d4fb9c2555df68cb7a
+      internalID: -1628098540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveUL2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865dc7ff579fb5d49afbdff200d323ec
+      internalID: 991086960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightIdleDL
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df4506935a0dcd4fa3316171e4f8c5a
+      internalID: -10088989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveDL1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbb67c6708c6ea448f0f8f7c3d69a5c
+      internalID: 287802793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveDL2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef0e5e0ce217d414181a2e8f83ad5c3e
+      internalID: -924560595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightIdleDR
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5f7c52cdbb10248b4c31a886edd706
+      internalID: 1880691874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveDR1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935f767ce4ccab348afb21c71f3c309a
+      internalID: 268293418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightMoveDR2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1f609bd5443d934188978c94fad7522
+      internalID: -407135011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -405,19 +657,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KnightSprites_0: 5552684656928348833
-      KnightSprites_1: -612715321910532007
-      KnightSprites_10: 1441016916
-      KnightSprites_11: -238061805
-      KnightSprites_12: 2111003738
-      KnightSprites_2: 3708396497564571495
+      KnightIdleD: 1441016916
+      KnightIdleDL: -10088989
+      KnightIdleDR: 1880691874
+      KnightIdleL: 1514527748
+      KnightIdleR: 5552684656928348833
+      KnightIdleU: 561891602
+      KnightIdleUL: 1906287212
+      KnightIdleUR: 1792124777
+      KnightMoveD1: -238061805
+      KnightMoveD2: 2111003738
+      KnightMoveDL1: 287802793
+      KnightMoveDL2: -924560595
+      KnightMoveDR1: 268293418
+      KnightMoveDR2: -407135011
+      KnightMoveL1: -1174007658
+      KnightMoveL2: -2007080302
+      KnightMoveR1: -612715321910532007
+      KnightMoveR2: 3708396497564571495
+      KnightMoveU1: 1850188281
+      KnightMoveU2: -1582212579
+      KnightMoveUL1: -1628098540
+      KnightMoveUL2: 991086960
+      KnightMoveUR1: 1705231993
+      KnightSprites_15: 349833702
       KnightSprites_3: -2693157119232651462
-      KnightSprites_4: 1514527748
-      KnightSprites_5: -1174007658
-      KnightSprites_6: -2007080302
-      KnightSprites_7: 561891602
-      KnightSprites_8: 1850188281
-      KnightSprites_9: -1582212579
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
