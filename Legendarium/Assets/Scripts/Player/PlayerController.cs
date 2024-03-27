@@ -73,7 +73,7 @@ public class PlayerController : KinematicMover
         {
             facingDirection = movingDirection;
             float angle = Vector2.Angle(Vector2.right, facingDirection);
-            if (Vector2.Dot(Vector2.up, facingDirection) < 0) angle += 180;
+            if (Vector2.Dot(Vector2.up, facingDirection) < 0) angle = 360-angle;
             int facingIndex = Mathf.FloorToInt(angle*8/360);
             CharacterAnimator.SetInteger("FacingDirection", facingIndex);
         }

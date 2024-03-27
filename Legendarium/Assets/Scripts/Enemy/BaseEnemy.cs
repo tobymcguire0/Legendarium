@@ -13,7 +13,7 @@ public abstract class BaseEnemy : KinematicMover
     protected float stunTime = 0;
     [SerializeField] protected Animator animator;
 
-
+    Vector2[] validDirections = { Vector2.right, new Vector2(1, 1).normalized, Vector2.up, new Vector2(-1, 1).normalized, Vector2.left, new Vector2(-1, -1), Vector2.down, new Vector2(1, -1).normalized };
     protected virtual void Initialize()
     {
         entityData.maxHealth = enemyData.maxHealth;
@@ -27,22 +27,17 @@ public abstract class BaseEnemy : KinematicMover
     {
         if (attacking) return;
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        if (Mathf.Abs(direction.x) > 0.1 && Mathf.Abs(direction.y) > 0.1)
-        {
-            direction = new Vector2(Mathf.Sign(direction.x), Mathf.Sign(direction.y));
-            direction.Normalize();
-        } else
-        {
-            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                direction.y = 0;
-            } else
-            {
-                direction.x = 0;
-            }
-        }
         if (direction != Vector2.zero)
+        {
             facingDirection = direction;
+            float angle = Vector2.Angle(Vector2.right, facingDirection);
+            if (Vector2.Dot(Vector2.up, facingDirection) < 0) angle = 360-angle;
+            int facingIndex = Mathf.FloorToInt(angle * 8 / 360);
+            Debug.Log(facingIndex);
+            direction = validDirections[facingIndex];
+            animator.SetInteger("FacingDirection", facingIndex);
+        }
+        Debug.Log(direction);
         Vector2 nextPosition = direction * enemyData.moveSpeed * Time.fixedDeltaTime;
         KinematicMove(nextPosition);
     }
