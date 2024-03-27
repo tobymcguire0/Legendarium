@@ -14,6 +14,7 @@ public class PlayerController : KinematicMover
     [SerializeField] Transform attackRotator;
     [SerializeField] BoxCollider2D meleeHurtbox;
     [SerializeField] CharacterType characterData;
+    [SerializeField] Animator animator;
     [SerializeField] float baseMoveSpeed;
     [SerializeField] int globalBaseMeleeDamage;
     [SerializeField] float invincibilityTime=.2f;
@@ -31,6 +32,7 @@ public class PlayerController : KinematicMover
     public float MoveSpeed { get { return baseMoveSpeed; } }
     public PlayerState CurrentState { get { return currentState; } set { currentState = value; } }
     public CharacterType CharacterData { get { return characterData; } }
+    public Animator CharacterAnimator { get { return animator; } }
 
     private void Awake()
     {
@@ -67,6 +69,14 @@ public class PlayerController : KinematicMover
             movingDirection = new Vector2(1*Mathf.Sign(movingDirection.x), 1 * Mathf.Sign(movingDirection.y));            
         }
         movingDirection.Normalize();
+        if (movingDirection != Vector2.zero)
+        {
+            facingDirection = movingDirection;
+            float angle = Vector2.Angle(Vector2.right, facingDirection);
+            if (Vector2.Dot(Vector2.up, facingDirection) < 0) angle += 180;
+            int facingIndex = Mathf.FloorToInt(angle*8/360);
+            CharacterAnimator.SetInteger("FacingDirection", facingIndex);
+        }
         
     }
 

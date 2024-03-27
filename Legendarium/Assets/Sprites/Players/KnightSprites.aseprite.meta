@@ -231,10 +231,10 @@ ScriptedImporter:
     - name: KnightSprites
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 144
-        width: 158
-        height: 16
+        x: 1
+        y: 96
+        width: 159
+        height: 64
       spriteId: 004b7aafc96079a4ca1370e06ce89759
     linkedCells: []
     parentIndex: -1

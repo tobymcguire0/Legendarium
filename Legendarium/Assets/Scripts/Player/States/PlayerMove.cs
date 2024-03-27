@@ -28,11 +28,12 @@ public class PlayerMove : PlayerState
 
     public override void EnterState()
     {
-
+        player.CharacterAnimator.SetBool("Moving", true);
     }
 
     public override void ExitState()
     {
+        player.CharacterAnimator.SetBool("Moving", false);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
