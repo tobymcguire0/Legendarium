@@ -15,6 +15,14 @@ public abstract class KinematicMover : Entity
             rb.MovePosition((Vector2)transform.position+newPos);
         } else
         {
+            //Try moving in only one direction
+            if(!CheckCollisionIn(new Vector2(newPos.x, 0)))
+            {
+                rb.MovePosition((Vector2)transform.position + new Vector2(newPos.x,0));
+            } else if(!CheckCollisionIn(new Vector2(0, newPos.y)))
+            {
+                rb.MovePosition((Vector2)transform.position + new Vector2(0,newPos.y));
+            }
         }
     }
     public void KinematicForceMove(Vector2 newPos)

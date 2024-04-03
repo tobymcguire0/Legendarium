@@ -13,17 +13,12 @@ public class MeleeEnemy : BaseEnemy
     protected override void Attack()
     {
         AttackRotator.transform.right = facingDirection;
-        StartCoroutine(Swing());
+        AttackRotator.SetActive(true);
     }
     public void EndAttackAnim()
     {
         attacking = false;
         attackCooldown = .5f;
-    }
-    IEnumerator Swing()
-    {
-        AttackRotator.SetActive(true);
-        yield return new WaitForSeconds(.1f);
         AttackRotator.SetActive(false);
     }
 

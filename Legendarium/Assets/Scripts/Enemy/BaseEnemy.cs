@@ -25,19 +25,21 @@ public abstract class BaseEnemy : KinematicMover
     protected abstract void Attack();
     protected void Move()
     {
-        if (attacking) return;
+        if (attacking)
+        {
+            animator.SetBool("Moving", false);
+        }
         Vector2 direction = (player.transform.position - transform.position).normalized;
         if (direction != Vector2.zero)
         {
+            animator.SetBool("Moving", true);
             facingDirection = direction;
             float angle = Vector2.Angle(Vector2.right, facingDirection);
             if (Vector2.Dot(Vector2.up, facingDirection) < 0) angle = 360-angle;
             int facingIndex = Mathf.FloorToInt(angle * 8 / 360);
-            Debug.Log(facingIndex);
             direction = validDirections[facingIndex];
-            animator.SetInteger("FacingDirection", facingIndex);
+            animator.SetInteger("MoveDirection", facingIndex);
         }
-        Debug.Log(direction);
         Vector2 nextPosition = direction * enemyData.moveSpeed * Time.fixedDeltaTime;
         KinematicMove(nextPosition);
     }
@@ -53,8 +55,9 @@ public abstract class BaseEnemy : KinematicMover
         base.Damage(amount, knockback);
         if (oldInvincibilityTimer > 0) return;
         KinematicMove(knockback*.3f);
-        animator.SetTrigger("Stun");
-        stunTime = .3f;
+        animator.SetBool("Stun",true);
+        animator.SetBool("Moving", false);
+        stunTime = .5f;
     }
     public override void Update()
     {
@@ -64,6 +67,10 @@ public abstract class BaseEnemy : KinematicMover
         if (stunTime > 0)
         {
             stunTime-= Time.deltaTime;
+            if (stunTime <= 0)
+            {
+                animator.SetBool("Stun", false);
+            }
             return;
         }
         
@@ -72,10 +79,11 @@ public abstract class BaseEnemy : KinematicMover
             if (attackCooldown <= 0 && !attacking)
             {
                 attacking = true;
-                animator.SetTrigger("Attack");
             }
 
         }
+
+        animator.SetBool("Attack", attacking);
     }
     private void FixedUpdate()
     {
