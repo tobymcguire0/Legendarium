@@ -6,9 +6,10 @@ public class EnemySpawner : Entity
 {
     [SerializeField] PlayerDetector playerDetector;
     [SerializeField] private int spawnerHealth = 5;
-   [SerializeField] private GameObject entityToSpawn;
+    [SerializeField] private GameObject entityToSpawn;
     [SerializeField] float spawnCooldown = 4f;
     [SerializeField] float activationDistance = 6f;
+    [SerializeField] LayerMask collisionMask;
     public bool spawning = false;
     float cooldownTime;
     protected override void Die()
@@ -31,8 +32,20 @@ public class EnemySpawner : Entity
             cooldownTime -= Time.deltaTime;
             return;
         }
-        Instantiate(entityToSpawn, transform.position, Quaternion.identity);
+        if (CanSpawnCheck())
+        {
+            Instantiate(entityToSpawn, transform.position, Quaternion.identity);
+        }
         cooldownTime = spawnCooldown;
+    }
+
+    bool CanSpawnCheck()
+    {
+        RaycastHit2D[] results = new RaycastHit2D[2]; 
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.useTriggers = false;
+        filter.SetLayerMask(collisionMask);
+        return (GetComponent<BoxCollider2D>().Cast(Vector2.zero,filter, results, 0)==0);
     }
     
     private void OnDrawGizmos()

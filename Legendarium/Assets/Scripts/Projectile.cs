@@ -11,8 +11,7 @@ public class Projectile : MonoBehaviour
     float life;
     public void Init(Vector2 direction)
     {
-        life = 5;
-        GetComponent<Hurtbox>().InitHurtbox(data.ProjectileDamage);
+        life = 3;
         projectileDirection = direction;
     }
     private void Update()
@@ -32,6 +31,12 @@ public class Projectile : MonoBehaviour
     {
         if (collision.CompareTag("Player")||collision.isTrigger)
             return;
+        Entity hitEntity;
+        if(collision.gameObject.TryGetComponent(out hitEntity))
+        {
+            Debug.Log("HEEHHEH");
+            hitEntity.Damage(data.ProjectileDamage,(collision.transform.position-transform.position).normalized);
+        }
         HitObject();
     }
     public void DestroyProjectile()

@@ -132,6 +132,9 @@ MonoBehaviour:
   entityToSpawn: {fileID: 1414154609004559846, guid: 264ba62f6636a1a40a8d484bb0644904, type: 3}
   spawnCooldown: 2.5
   activationDistance: 6
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 8
   spawning: 0
 --- !u!61 &5564938358864889050
 BoxCollider2D:
@@ -401,8 +404,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.426, g: 0.33393073, b: 0.199368, a: 1}
-      maxColor: {r: 0.5188679, g: 0.41422617, b: 0.2667764, a: 1}
+      minColor: {r: 0.284, g: 0.2047934, b: 0.092584, a: 1}
+      maxColor: {r: 0.34, g: 0.2576775, b: 0.13736002, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
