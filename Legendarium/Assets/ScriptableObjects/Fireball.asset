@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   ProjectileSpeed: 7.5
-  ProjectileDamage: 10
+  ProjectileDamage: 20

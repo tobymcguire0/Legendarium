@@ -10,7 +10,10 @@ public class PlayerController : KinematicMover
     public static PlayerController instance;
     PlayerStateFactory states;
     PlayerState currentState;
+    [Header("Player Controller Stuff")]
     [SerializeField] GameObject magicProjectile;
+    [SerializeField] ParticleSystem fizzleParticles;
+    [SerializeField] ParticleSystem magicParticles;
     [SerializeField] Transform attackRotator;
     [SerializeField] BoxCollider2D meleeHurtbox;
     [SerializeField] CharacterType characterData;
@@ -25,6 +28,14 @@ public class PlayerController : KinematicMover
     float damageTimer;
     bool magicPressed = false;
     bool meleePressed = false;
+    int numKeys;
+
+
+    public delegate void HealthChangeEvent(float percent);
+    public delegate void DeathEvent();
+    public static HealthChangeEvent OnPlayerHealthChange; 
+    public static HealthChangeEvent OnPlayerManaChange;
+    public static DeathEvent PlayerDeath;
     public bool IsMagicPressed { get { return magicPressed; } }
     public bool IsMeleePressed { get { return meleePressed; } }
     public Vector2 FacingDirection { get { return facingDirection; } set { facingDirection = value; attackRotator.right = value; } }
@@ -36,7 +47,15 @@ public class PlayerController : KinematicMover
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         states = new PlayerStateFactory(this);
         currentState = states.Idle();
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +69,14 @@ public class PlayerController : KinematicMover
 
     public void FireProjectile()
     {
+        if (entityData.currentMana <= 0)
+        {
+            fizzleParticles.Emit(5);
+            return;
+        }
+        magicParticles.Emit(15);
+        entityData.currentMana--;
+        OnPlayerManaChange?.Invoke(entityData.currentMana / entityData.maxMana);
         Projectile proj = Instantiate(magicProjectile).GetComponent<Projectile>();
         proj.transform.position = transform.position+(Vector3)facingDirection;
         proj.Init(facingDirection);
@@ -60,7 +87,12 @@ public class PlayerController : KinematicMover
         meleeHurtbox.gameObject.SetActive(enabled);
     }
 
-
+    public bool UseKey()
+    {
+        if (numKeys <= 0) return false;
+        numKeys--;
+        return true;
+    }
     void OnMovePerformed(InputAction.CallbackContext ctx)
     {
         movingDirection = ctx.ReadValue<Vector2>();
@@ -86,11 +118,24 @@ public class PlayerController : KinematicMover
         if(entityData.currentHealth>0)
             damageTimer = invincibilityTime;
         base.Damage(amount,knockback);
+        OnPlayerHealthChange?.Invoke(entityData.currentHealth / entityData.maxHealth);
         
+    }
+
+    public override void Heal(int amount)
+    {
+        base.Heal(amount); 
+        OnPlayerHealthChange?.Invoke(entityData.currentHealth / entityData.maxHealth);
+    }
+    public override void HealMana(int amount)
+    {
+        base.HealMana(amount); 
+        OnPlayerManaChange?.Invoke(entityData.currentMana / entityData.maxMana);
     }
     protected override void Die()
     {
         Debug.Log("Player Died!");
+        PlayerDeath?.Invoke();
         Destroy(gameObject);
     }
 

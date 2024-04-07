@@ -14,6 +14,20 @@ public abstract class BaseEnemy : KinematicMover
     [SerializeField] protected Animator animator;
 
     Vector2[] validDirections = { Vector2.right, new Vector2(1, 1).normalized, Vector2.up, new Vector2(-1, 1).normalized, Vector2.left, new Vector2(-1, -1), Vector2.down, new Vector2(1, -1).normalized };
+    private void OnEnable()
+    {
+        PlayerController.PlayerDeath += OnPlayerDeath;
+    }
+    private void OnDisable()
+    {
+        PlayerController.PlayerDeath -= OnPlayerDeath;
+    }
+
+    void OnPlayerDeath()
+    {
+        this.enabled = false;
+    }
+
     protected virtual void Initialize()
     {
         entityData.maxHealth = enemyData.maxHealth;

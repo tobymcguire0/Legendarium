@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9443c1f11e1b594a9d6d61a13abf589, type: 3}
   m_Name: Fighter
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  maxMana: 500
+  maxHealth: 100
+  maxMana: 10
   baseMeleeDamage: 1.3
   baseMagicDamage: 0.8
   startingSpeed: 1.11
