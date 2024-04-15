@@ -35,6 +35,7 @@ public class PlayerController : KinematicMover
     public delegate void DeathEvent();
     public static HealthChangeEvent OnPlayerHealthChange; 
     public static HealthChangeEvent OnPlayerManaChange;
+    public static HealthChangeEvent OnPlayerKeyCountChange;
     public static DeathEvent PlayerDeath;
     public bool IsMagicPressed { get { return magicPressed; } }
     public bool IsMeleePressed { get { return meleePressed; } }
@@ -90,11 +91,13 @@ public class PlayerController : KinematicMover
     public void pickupKey(int number)
     {
         numKeys+=number;
+        OnPlayerKeyCountChange?.Invoke(numKeys);
     }
     public bool UseKey()
     {
         if (numKeys <= 0) return false;
         numKeys--;
+        OnPlayerKeyCountChange?.Invoke(numKeys);
         return true;
     }
     void OnMovePerformed(InputAction.CallbackContext ctx)
