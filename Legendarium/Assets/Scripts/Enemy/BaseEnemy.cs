@@ -4,9 +4,12 @@ using UnityEngine;
 
 public abstract class BaseEnemy : KinematicMover
 {
+    [Header("Enemy Stuff")]
     protected Vector2 moveDirection;
     protected Vector2 facingDirection;
     public EnemyData enemyData;
+    [SerializeField] protected LootDrops lootDrop;
+    [SerializeField] protected GameObject[] mustDropList;
     protected float attackCooldown = 0;
     protected bool attacking;
     bool moving = false;

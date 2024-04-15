@@ -8,6 +8,12 @@ public abstract class KinematicMover : Entity
     public LayerMask collisionMask;
     public Rigidbody2D rb;
     Vector2 nextMove;
+    Vector2 ConvertToPixelCoords(Vector2 position)
+    {
+        float pixelsPerWorldUnit = 16;
+        Vector2 newPos = position / pixelsPerWorldUnit;
+        return newPos;
+    }
     public void KinematicMove(Vector2 newPos)
     {
         if (!CheckCollisionIn(newPos))

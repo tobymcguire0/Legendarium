@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class EnemySpawner : Entity
 {
+    [Header("Spawner Stuff")]
     [SerializeField] PlayerDetector playerDetector;
     [SerializeField] private int spawnerHealth = 5;
     [SerializeField] private GameObject entityToSpawn;
     [SerializeField] float spawnCooldown = 4f;
     [SerializeField] float activationDistance = 6f;
     [SerializeField] LayerMask collisionMask;
+    [SerializeField] LootDrops lootDrop;
     public bool spawning = false;
     float cooldownTime;
     protected override void Die()
     {
+        lootDrop.DropItem();
         Destroy(this.gameObject);
     }
     private void Start()

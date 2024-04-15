@@ -8,6 +8,7 @@ public class HealthPickup : MonoBehaviour
     {
         Health,
         Mana,
+        Key,
     }
     [SerializeField] PickupType type;
     [SerializeField] int healAmount;
@@ -23,6 +24,9 @@ public class HealthPickup : MonoBehaviour
                     break;
                 case PickupType.Mana:
                     entity.HealMana(healAmount);
+                    break;
+                case PickupType.Key:
+                    entity.GetComponent<PlayerController>().pickupKey(1);
                     break;
             }
             Destroy(this.gameObject);

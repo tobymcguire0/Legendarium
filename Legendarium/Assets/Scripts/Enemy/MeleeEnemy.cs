@@ -24,6 +24,7 @@ public class MeleeEnemy : BaseEnemy
 
     protected override void Die()
     {
+        lootDrop.DropItem();
         Destroy(this.gameObject);
     }
 

@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 5
   attackSpeed: 0.06
   moveSpeed: 4
+  lootTable: {fileID: 11400000, guid: 31149544d2041764ea12d0b991c4f2d1, type: 2}

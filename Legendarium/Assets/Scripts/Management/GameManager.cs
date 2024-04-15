@@ -5,6 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    private void Start()
+    {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        } else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+    }
     private void OnEnable()
     {
         PlayerController.PlayerDeath += OnPlayerDeath;
@@ -21,5 +34,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("MainMenu");
+        instance = null;
+        PlayerController.instance = null;
+        Destroy(this.gameObject);
     }
 }

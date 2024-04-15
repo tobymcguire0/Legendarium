@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db98bd8f8e4b8a64d835963a27ab13c6, type: 3}
+  m_Name: BasicLootTable
+  m_EditorClassIdentifier: 
+  table:
+    _serializedList:
+    - Key: {fileID: 221251820424029504, guid: a3ec335e9daa72145898fc52a259bc15, type: 3}
+      Value: 10
+    - Key: {fileID: 715626792639192022, guid: 9c226de10ed27c249b1723071bc67df3, type: 3}
+      Value: 10
+  fakeTickets: 30

@@ -87,6 +87,10 @@ public class PlayerController : KinematicMover
         meleeHurtbox.gameObject.SetActive(enabled);
     }
 
+    public void pickupKey(int number)
+    {
+        numKeys+=number;
+    }
     public bool UseKey()
     {
         if (numKeys <= 0) return false;
