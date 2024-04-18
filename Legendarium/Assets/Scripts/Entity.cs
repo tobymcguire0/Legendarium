@@ -13,7 +13,10 @@ public struct EntityData
 [RequireComponent(typeof(Collider2D))]
 public abstract class Entity : MonoBehaviour
 {
+    public delegate void AwardPointsOnDeath(int numPoints);
+    public static AwardPointsOnDeath onAwardPoints;
     [Header("Entity Stuff")]
+    [SerializeField] int pointValue;
     [SerializeField] GameObject deathExplosion;
     [SerializeField] ParticleSystem HurtParticles;
     [SerializeField] HealthBar healthBar;
@@ -42,6 +45,7 @@ public abstract class Entity : MonoBehaviour
         {
             entityData.currentHealth = 0;
             Instantiate(deathExplosion, transform.position, Quaternion.identity);
+            onAwardPoints?.Invoke(pointValue);
             Die();
         }
     }

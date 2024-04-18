@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
+    public delegate void AwardPointsOnPickup(int numPoints);
+    public static AwardPointsOnPickup onAwardPoints;
     enum PickupType
     {
         Health,
@@ -28,7 +30,9 @@ public class HealthPickup : MonoBehaviour
                 case PickupType.Key:
                     entity.GetComponent<PlayerController>().pickupKey(1);
                     break;
+
             }
+            onAwardPoints?.Invoke(50);
             Destroy(this.gameObject);
         }
     }

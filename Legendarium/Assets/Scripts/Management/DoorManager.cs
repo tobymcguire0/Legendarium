@@ -21,7 +21,7 @@ public class DoorManager : MonoBehaviour
     }
     void Unlock()
     {
-        GetComponent<ParticleSystem>().Play();
+        GetComponent<ParticleSystem>()?.Play();
         Destroy(this.transform.parent.gameObject);
     }
 }

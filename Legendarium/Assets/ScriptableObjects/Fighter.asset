@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxMana: 10
-  baseMeleeDamage: 1.3
-  baseMagicDamage: 0.8
+  baseMeleeDamage: 1
+  baseMagicDamage: 1
   startingSpeed: 1.11

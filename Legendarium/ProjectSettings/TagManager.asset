@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Hurtbox
   - Hitbox
-  - 
+  - PixelUI
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2435084217
+    locked: 0
+  - name: UI
+    uniqueID: 2842019699
     locked: 0

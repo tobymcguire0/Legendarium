@@ -37,7 +37,7 @@ public class PlayerMelee : PlayerState
     public override void EnterState()
     {
         player.MeleeHurtbox(true);
-        attackTimer = 0.2f;
+        attackTimer = 0.25f;
     }
 
     public override void ExitState()
